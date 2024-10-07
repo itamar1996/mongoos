@@ -14,3 +14,8 @@ const onlySoldiersAndComanders = async (req,res,next)=>{
         
     }
 }
+
+module.exports = (
+    onlyComanders,
+    onlySoldiersAndComanders
+)
