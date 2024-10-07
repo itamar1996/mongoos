@@ -1,17 +1,9 @@
 const router = require('express').Router()
-router.post('/',()=>{
+const {createPoll,getNotiffication,getPollById ,replay,deletePoll} = require('../controllers/greenEyeController')
 
-})
-router.get('/my',()=>{
-    
-})
-router.get('/:id',()=>{
-    
-})
-router.post('/replay',()=>{
-    
-})
-router.delete('/:id',()=>{
-    
-})
+router.post('/',createPoll)
+router.get('/my',getNotiffication)
+router.get('/:id',getPollById)
+router.post('/replay',replay)
+router.delete('/:id',deletePoll)
 module.exports = router
