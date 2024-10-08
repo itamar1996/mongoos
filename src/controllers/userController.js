@@ -1,28 +1,29 @@
-const register = (req,res)=>{
-    try {
-    
-    } catch (error) {
-        
-}
-}
+const { createUser } = require("../services/userService")
 
-const getProfile = (req,res)=>{
-    try {
-    
-    } catch (error) {
-        
-}
-}
-const setSettings = (req,res)=>{
-    try {
-    
-    } catch (error) {
-        
-}
-}
+const register = async (req, res) => {
+  try {    
+    await createUser(req.body)
+    res.status(201).json({
+      msg:"user created"
+    })
+  } catch (err) {
+    res.status(400).json(err)
+  }
+};
 
-module.exports={
-    register,
-    getProfile,
-    setSettings
-}
+const getProfile = async (req, res) => {
+  try {
+  } catch (err) {}
+};
+
+const setSettings = async (req, res) => {
+  try {
+    
+  } catch (err) {}
+};
+
+module.exports = {
+  register,
+  getProfile,
+  setSettings,
+};

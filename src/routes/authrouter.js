@@ -1,7 +1,9 @@
-const router = require('express').Router()
-const {login,logout} = require('../controllers/authController')
-router.post('/login',()=>login)
-router.delete('/logout',()=>logout)
+const router = require("express").Router();
+const { login, logout } = require("../controllers/authController");
+const { onlySoldiersAndCommanders } = require("../middlewares/authMiddlewares");
 
+router.post("/login", login);
 
-module.exports = router
+router.delete("/logout", onlySoldiersAndCommanders, logout);
+
+module.exports = router;

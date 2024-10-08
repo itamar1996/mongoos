@@ -1,9 +1,21 @@
-const router = require('express').Router()
-const {createPoll,getNotiffication,getPollById ,replay,deletePoll} = require('../controllers/greenEyeController')
+const router = require("express").Router();
+const {
+  createPoll,
+  getNotifications,
+  getPollById,
+  reply,
+  deletePoll,
+} = require("../controllers/greenEyeController");
+const { onlyCommanders, onlySoldiersAndCommanders } = require("../middlewares/authMiddlewares")
 
-router.post('/',createPoll)
-router.get('/my',getNotiffication)
-router.get('/:id',getPollById)
-router.post('/replay',replay)
-router.delete('/:id',deletePoll)
-module.exports = router
+router.post("/", onlyCommanders, createPoll);
+
+router.get("/my", onlySoldiersAndCommanders, getNotifications);
+
+router.get("/:id", onlyCommanders, getPollById);
+
+router.post("/reply", onlySoldiersAndCommanders, reply);
+
+router.delete("/:id", onlyCommanders, deletePoll);
+
+module.exports = router;
