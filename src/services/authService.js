@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const login = async (user) => {
   try {
     const dbUser = await UserModel.findOne({ user_name: user.user_name });
+console.log("uyfg",dbUser);
 
     if (!dbUser) throw new Error("user not found");
 
